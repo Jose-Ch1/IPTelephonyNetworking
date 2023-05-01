@@ -1,0 +1,201 @@
+basic configurations to switchand routers
+
+
+finance switch
+
+enable
+conf t
+hostname FIN-SW
+enable password cisco
+line console 0
+password cisco
+login
+exit
+banner motd #NO UNAUTHORISED ACCESS, THIS IS PUNISHABLE BY LAW!!!!#
+service password-encryption
+no ip domain-lookupg
+do wr
+exit
+
+
+Vlan configurations
+
+vlan 10
+name DATA
+Vlan 100
+name VOICE
+
+int fa0/1
+switchport mode trunk
+exit
+int range fa0/2-24
+switchport mode access
+switchport access vlan 10
+switchport voice vlan 100
+exit
+do wr
+exit
+
+
+/
+/
+/
+
+Server room switch
+
+enable
+conf t
+hostname SVR-SW
+enable password cisco
+line console 0
+password cisco
+login
+exit
+banner motd #NO UNAUTHORISED ACCESS, THIS IS PUNISHABLE BY LAW!!!!#
+service password-encryption
+no ip domain-lookup
+do wr
+exit
+
+Vlan configurations
+
+vlan 50
+name DATA
+
+int fa0/1
+switchport mode trunk
+exit
+int range fa0/2-5
+switchport mode access
+switchport access vlan 50
+exit
+do wr
+exit
+
+
+
+/
+/
+/
+
+ICT switch
+
+enable
+conf t
+hostname ICT-SW
+enable password cisco
+line console 0
+password cisco
+login
+exit
+banner motd #NO UNAUTHORISED ACCESS, THIS IS PUNISHABLE BY LAW!!!!#
+service password-encryption
+no ip domain-lookup
+do wr
+exit
+
+
+Vlan configurations
+
+vlan 40
+name DATA
+Vlan 100
+name VOICE
+
+int fa0/1
+switchport mode trunk
+exit
+int range fa0/2-24
+switchport mode access
+switchport access vlan 40
+switchport voice vlan 100
+exit
+do wr
+exit
+
+
+/
+/
+/
+Sales switch
+
+enable
+conf t
+hostname SLS-SW
+enable password cisco
+line console 0
+password cisco
+login
+exit
+banner motd #NO UNAUTHORISED ACCESS, THIS IS PUNISHABLE BY LAW!!!!#
+service password-encryption
+no ip domain-lookup
+do wr
+exit
+
+
+Vlan configurations
+
+vlan 30
+name DATA
+Vlan 100
+name VOICE
+
+int fa0/1
+switchport mode trunk
+exit
+int range fa0/2-24
+switchport mode access
+switchport access vlan 30
+switchport voice vlan 100
+exit
+do wr
+exit
+
+
+
+/
+/
+/
+
+HR switch
+
+enable
+conf t
+hostname HR-SW
+enable password cisco
+line console 0
+password cisco
+login
+exit
+banner motd #NO UNAUTHORISED ACCESS, THIS IS PUNISHABLE BY LAW!!!!#
+service password-encryption
+no ip domain-lookup
+do wr
+exit
+
+Vlan configurations
+
+vlan 20
+name DATA
+Vlan 100
+name VOICE
+
+int fa0/1
+switchport mode trunk
+exit
+int range fa0/2-24
+switchport mode access
+switchport access vlan 20
+switchport voice vlan 100
+exit
+do wr
+exit
+
+
+
+/
+/
+/
+
+

@@ -1,0 +1,3 @@
+Comandos para ver configuraciones
+
+do show start

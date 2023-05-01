@@ -1,0 +1,281 @@
+#### configuraciones routers
+
+Finace Router
+
+enable
+conf t
+hostname FIN-Router
+enable password cisco
+line console 0
+password cisco
+login
+exit
+banner motd #NO UNAUTHORISED ACCESS, THIS IS PUNISHABLE BY LAW!!!!#
+service password-encryption
+no ip domain-lookup
+username cisco password cisco
+ip domain name cisco.net
+crypto key generate rsa general-keys modulus 1024
+ip ssh version 2
+line vty 0 15
+login local
+transport input ssh
+exit
+do wr
+exit
+
+### IP  Configurations
+
+int se0/03/0
+ip address 10.10.10.1 255.255.255.252
+no shutdown
+
+int se0/03/1
+ip address 10.10.10.5 255.255.255.252
+no shutdown
+exit
+do wr
+
+### DHCP Servise to IP Phones
+
+service dhcp
+ip dhcp excluded-address 172.16.100.1
+ip dhcp pool FNCVOICE
+network 172.16.100.0 255.255.255.224
+default-router 172.16.100.1
+option 150 ip 172.16.100.1
+exit
+do wr
+exit
+
+### Configuration of Router-on-a-Stick
+
+int fa0/0.10
+encapsulation dot1q 10
+ip address 192.168.100.1 255.255.255.224
+ip helper-address 192.168.100.130
+exit
+int fa0/0.100
+encapsulation dot1Q 100
+ip address 172.16.100.1 255.255.255.224
+exit
+do wr
+
+
+
+
+
+/
+/
+/
+HR Router
+
+enable
+conf t
+hostname HR-Router
+enable password cisco
+line console 0
+password cisco
+login
+exit
+banner motd #NO UNAUTHORISED ACCESS, THIS IS PUNISHABLE BY LAW!!!!#
+service password-encryption
+no ip domain-lookup
+username cisco password cisco
+ip domain name cisco.net
+crypto key generate rsa general-keys modulus 1024
+ip ssh version 2
+line vty 0 15
+login local
+transport input ssh
+exit
+do wr
+exit
+
+### IP  Configurations
+
+int se0/03/0
+ip address 10.10.10.9 255.255.255.252
+no shutdown
+
+int se0/03/1
+ip address 10.10.10.2 255.255.255.252
+no shutdown
+exit
+do wr
+
+### DHCP Servise to IP Phones
+
+service dhcp
+ip dhcp excluded-address 172.16.100.33
+ip dhcp pool HRVOICE
+network 172.16.100.32 255.255.255.224
+default-router 172.16.100.33
+option 150 ip 172.16.100.33
+exit
+do wr
+exit
+
+### Configuration of Router-on-a-Stick
+
+int fa0/0.20
+encapsulation dot1q 20
+ip address 192.168.100.31 255.255.255.224
+ip helper-address 192.168.100.130
+exit
+int fa0/0.100
+encapsulation dot1Q 100
+ip address 172.16.100.31 255.255.255.224
+exit
+do wr
+
+
+
+/
+/
+/
+
+Sales Router
+
+enable
+conf t
+hostname SLS-Router
+enable password cisco
+line console 0
+password cisco
+login
+exit
+banner motd #NO UNAUTHORISED ACCESS, THIS IS PUNISHABLE BY LAW!!!!#
+service password-encryption
+no ip domain-lookup
+username cisco password cisco
+ip domain name cisco.net
+crypto key generate rsa general-keys modulus 1024
+ip ssh version 2
+line vty 0 15
+login local
+transport input ssh
+exit
+do wr
+exit
+
+### IP  Configurations
+
+int se0/03/0
+ip address 10.10.10.10 255.255.255.252
+no shutdown
+
+int se0/03/1
+ip address 10.10.10.13 255.255.255.252
+no shutdown
+exit
+do wr
+
+### DHCP Servise to IP Phones
+
+service dhcp
+ip dhcp excluded-address 172.16.100.65
+ip dhcp pool SLSVOICE
+network 172.16.100.64 255.255.255.224
+default-router 172.16.100.65
+option 150 ip 172.16.100.65
+exit
+do wr
+exit
+
+### Configuration of Router-on-a-Stick
+
+int fa0/0.30
+encapsulation dot1q 30
+ip address 192.168.100.65 255.255.255.224
+ip helper-address 192.168.100.130
+exit
+int fa0/0.100
+encapsulation dot1Q 100
+ip address 172.16.100.65 255.255.255.224
+exit
+do wr
+
+
+
+/
+/
+/
+
+
+ICT Router
+
+enable
+conf t
+hostname ICT-Router
+enable password cisco
+line console 0
+password cisco
+login
+exit
+banner motd #NO UNAUTHORISED ACCESS, THIS IS PUNISHABLE BY LAW!!!!#
+service password-encryption
+no ip domain-lookup
+username cisco password cisco
+ip domain name cisco.net
+crypto key generate rsa general-keys modulus 1024
+ip ssh version 2
+line vty 0 15
+login local
+transport input ssh
+exit
+do wr
+exit
+
+### IP  Configurations
+
+int se0/03/0
+ip address 10.10.10.6 255.255.255.252
+no shutdown
+
+int se0/03/1
+ip address 10.10.10.14 255.255.255.252
+no shutdown
+exit
+do wr
+
+### DHCP Servise to IP Phones
+
+service dhcp
+ip dhcp excluded-address 172.16.100.97
+ip dhcp pool ICTVOICE
+network 172.16.100.96 255.255.255.224
+default-router 172.16.100.97
+option 150 ip 172.16.100.97
+exit
+do wr
+exit
+
+
+### Configuration of Router-on-a-Stick
+
+int fa0/1.40
+encapsulation dot1q 40
+ip address 192.168.100.97 255.255.255.224
+ip helper-address 192.168.100.130
+exit
+int fa0/1.100
+encapsulation dot1Q 100
+ip address 172.16.100.97 255.255.255.224
+exit
+do wr
+
+###server Room
+### Configuration of Router-on-a-Stick
+
+int fa0/1.50
+encapsulation dot1q 50
+ip address 192.168.100.129 255.255.255.248
+ip helper-address 192.168.100.130
+exit
+
+/
+/
+/
+
+
