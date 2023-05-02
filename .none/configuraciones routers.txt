@@ -1,6 +1,6 @@
 #### configuraciones routers
 
-Finace Router
+Finance Router
 
 enable
 conf t
@@ -61,9 +61,40 @@ ip address 172.16.100.1 255.255.255.224
 exit
 do wr
 
+##  routing Configurations OSPF
 
+router ospf 10 
+network 10.10.10.4 0.0.0.3 area 0
+network 10.10.10.0 0.0.0.3 area 0
+network 192.168.100.0 0.0.0.31 area 0
+network 172.16.100.0 0.0.0.31 area 0
+exit
+do wr
 
+ ### VoIP Configuration in routers
 
+telephony-service
+max-dn 20
+max-ephones 20
+ip source-address 172.16.100.1 port 2000
+auto assign 1 to 20
+exit
+ephone-dn 1
+number 101
+ephone-dn 2 
+number 102
+ephone-dn 3 
+number 103
+ephone-dn 4 
+number 104
+ephone-dn 5 
+number 105
+ephone-dn 6 
+number 106
+ephone-dn 7 
+number 107
+exit
+do wr
 
 /
 /
@@ -129,7 +160,15 @@ ip address 172.16.100.31 255.255.255.224
 exit
 do wr
 
+##  routing Configurations OSPF
 
+router ospf 10 
+network 10.10.10.8 0.0.0.3 area 0
+network 10.10.10.0 0.0.0.3 area 0
+network 192.168.100.32 0.0.0.31 area 0
+network 172.16.100.32 0.0.0.31 area 0
+exit
+do wr
 
 /
 /
@@ -196,6 +235,15 @@ ip address 172.16.100.65 255.255.255.224
 exit
 do wr
 
+##  routing Configurations OSPF
+
+router ospf 10 
+network 10.10.10.8 0.0.0.3 area 0
+network 10.10.10.12 0.0.0.3 area 0
+network 192.168.100.64 0.0.0.31 area 0
+network 172.16.100.64 0.0.0.31 area 0
+exit
+do wr
 
 
 /
@@ -268,12 +316,24 @@ do wr
 ###server Room
 ### Configuration of Router-on-a-Stick
 
-int fa0/1.50
+int fa0/0.50
 encapsulation dot1q 50
 ip address 192.168.100.129 255.255.255.248
 ip helper-address 192.168.100.130
 exit
 
+##  routing Configurations OSPF
+
+router ospf 10 
+network 10.10.10.4 0.0.0.3 area 0
+network 10.10.10.12 0.0.0.3 area 0
+network 192.168.100.128 0.0.0.7 area 0
+network 192.168.100.96 0.0.0.31 area 0
+network 172.16.100.96 0.0.0.7 area 0
+exit
+do wr
+
+ 
 /
 /
 /
